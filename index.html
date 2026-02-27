@@ -1459,23 +1459,51 @@
       requestAnimationFrame(tick);
     }
 
+    
+    const rsvpForm = document.getElementById("rsvpForm");
+    const rsvpNote = document.getElementById("rsvpNote");
+    const submitBtn = rsvpForm.querySelector('button[type="submit"]');
+
     const scriptURL = "https://script.google.com/macros/s/AKfycbw5I8ocfPz6X_3O-ZfYwNf9olQV5aOHrEAH5zNiEvTJLMhIrVxFKqf_WHKGZEoRo48NjQ/exec";
+
+    let isSubmitting = false;
+
     rsvpForm.addEventListener("submit", async (e) => {
       e.preventDefault();
-    
-      const formData = new FormData(rsvpForm); // grabs name/guests/attendance by input "name" attributes
-    
+
+      // STOP duplicates
+      if (isSubmitting) return;
+      isSubmitting = true;
+
+      // UI lock
+      submitBtn.disabled = true;
+      submitBtn.style.opacity = "0.7";
+      submitBtn.style.pointerEvents = "none";
+      rsvpNote.textContent = "در حال ثبت…";
+
       try {
+        const formData = new FormData(rsvpForm);
+
+        // IMPORTANT: avoid multiple submits by awaiting this call
         await fetch(scriptURL, {
           method: "POST",
           body: formData,
-          mode: "no-cors", // prevents CORS blocking (you can't read response though)
+          mode: "no-cors",
         });
-      
+
         rsvpNote.textContent = "سپاسگزاریم 🌿 پاسخ شما ثبت شد.";
+        // اگر خواستی همینجا کنفتی رو هم اجرا کن:
+        // launchConfetti();
+
         rsvpForm.reset();
       } catch (err) {
         rsvpNote.textContent = "خطا در ثبت اطلاعات. دوباره تلاش کنید.";
+      } finally {
+        // unlock
+        isSubmitting = false;
+        submitBtn.disabled = false;
+        submitBtn.style.opacity = "";
+        submitBtn.style.pointerEvents = "";
       }
     });
     // Music toggle

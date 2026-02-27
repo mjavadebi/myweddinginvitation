@@ -978,6 +978,17 @@
       .detail-row span{ white-space: normal; text-align:center; }
       .kicker{ padding: 10px 12px; }
     }
+    /* Single image layout */
+      .gallery.single{
+        display: flex;
+        justify-content: center;
+      }
+
+      .gallery.single .ph{
+        grid-column: unset;          /* remove grid behavior */
+        width: min(720px, 100%);
+        aspect-ratio: 4 / 3;         /* keep elegant ratio */
+      }
   </style>
 </head>
 
@@ -1157,19 +1168,17 @@
         <div class="section-card reveal">
           <div class="section-head">
             <h2 class="section-title">گالری</h2>
-            <div class="section-kicker">چند قاب عاشقانه</div>
+            <div class="section-kicker">یک قاب عاشقانه</div>
           </div>
           <p class="section-sub">
-            چند تصویر از لحظه‌های شیرین ما—نور نرم، لبخندهای گرم، و خاطره‌هایی که دوست داریم با شما شریک شویم.
+            گاهی یک تصویر، بیشتر از هزار کلمه حرف می‌زند.
+            این قاب، گوشه‌ای از آرامش و لبخندی‌ست که با هم ساختیم —
+            ساده، صمیمی و از ته دل.
           </p>
-
-          <div class="gallery">
-            <div class="ph reveal"><img alt="عکس ۱" src="./assets/1.jpg"></div>
-            <div class="ph reveal"><img alt="عکس ۲" src="./assets/2.jpg"></div>
-            <div class="ph reveal"><img alt="عکس ۳" src="./assets/3.jpg"></div>
-            <div class="ph reveal"><img alt="عکس ۴" src="./assets/4.jpg"></div>
-            <div class="ph reveal"><img alt="عکس ۵" src="./assets/5.jpg" style="object-position: center 20%;"></div>
-            <div class="ph reveal"><img alt="عکس ۶" src="./assets/6.jpg"></div>
+          <div class="gallery single">
+            <div class="ph reveal">
+              <img alt="عکس ۲" src="./assets/2.jpg">
+            </div>
           </div>
         </div>
       </div>
@@ -1190,7 +1199,7 @@
             <div class="fields">
               <label>
                 نام و نام خانوادگی
-                <input name="name" autocomplete="name" placeholder="مثلاً: سارا احمدی" required />
+                <input name="name" autocomplete="name" placeholder="مثلاً: جواد ابراهیمی" required />
               </label>
 
               <label>
@@ -1450,20 +1459,30 @@
       requestAnimationFrame(tick);
     }
 
-    rsvpForm.addEventListener('submit', (e) => {
+    const scriptURL = "https://script.google.com/macros/s/AKfycbxiaqTc_4VF1pWmQZjNeNyNYy9FYAdc8w15oLTb6bic4Zi3XdKjSxpa8xqFtsid3JZ5/exec";
+
+    rsvpForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const data = new FormData(rsvpForm);
-      const name = (data.get('name') || '').toString().trim();
-      const attendance = data.get('attendance');
-
-      rsvpNote.textContent = attendance === 'yes'
-        ? `سپاسگزاریم ${name || 'عزیز'} — مشتاق دیدار شما در جشن هستیم.`
-        : `سپاسگزاریم ${name || 'عزیز'} — جای شما خالی است و با عشق به یادتان هستیم.`;
-
-      launchConfetti();
-      rsvpForm.reset();
+    
+      const formData = {
+        name: rsvpForm.name.value,
+        guests: rsvpForm.guests.value,
+        attendance: rsvpForm.attendance.value
+      };
+    
+      try {
+        await fetch(scriptURL, {
+          method: 'POST',
+          body: JSON.stringify(formData),
+          headers: { "Content-Type": "application/json" }
+        });
+      
+        rsvpNote.textContent = "سپاسگزاریم 🌿 پاسخ شما ثبت شد.";
+        rsvpForm.reset();
+      } catch (err) {
+        rsvpNote.textContent = "خطا در ثبت اطلاعات. دوباره تلاش کنید.";
+      }
     });
-
     // Music toggle
     const bgm = document.getElementById('bgm');
     const musicBtn = document.getElementById('musicBtn');

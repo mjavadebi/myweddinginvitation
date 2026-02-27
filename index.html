@@ -166,7 +166,7 @@
     /* Desktop nav */
     nav#mainNav{
       display:flex;
-      gap:8px;
+      gap:auto;
       flex-wrap:wrap;
       justify-content:flex-start;
     }
@@ -865,9 +865,10 @@
       /* Hide desktop nav; show drawer */
       nav#mainNav{
         position: fixed;
-        top: 78px;                 /* below topbar */
         right: 0;
-        height: calc(100svh - 78px);
+        top: 0;
+        height: 100svh;
+        padding-top: 110px; /* pushes menu content below topbar */
         width: min(86vw, 330px);
 
         display: grid;
@@ -899,13 +900,13 @@
       }
 
       nav#mainNav::before{
-        content: "منو";
+        content: "فهرست";
         display:block;
         text-align:center;
         font: 600 12px/1 "Doran", sans-serif;
         letter-spacing:.22em;
         color: rgba(47,42,38,.60);
-        margin: 6px 0 10px;
+        margin: auto;
       }
 
       nav#mainNav .navlink{
@@ -960,10 +961,6 @@
       .pill{ order: 3; width: auto; justify-content: center; }
 
       /* drawer starts lower if wrapped */
-      nav#mainNav{
-        top: 126px;
-        height: calc(100svh - 126px);
-      }
 
       /* give hero room for wrapped topbar */
       header.hero{ padding-top: 150px; }

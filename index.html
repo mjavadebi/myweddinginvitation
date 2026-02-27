@@ -676,6 +676,7 @@
     .ph img{
       width:100%; height:100%;
       object-fit:cover;
+      object-position:center 0%; /* move crop upward */
       display:block;
       transform: scale(1.02);
       transition: transform 900ms var(--ease);
@@ -1089,15 +1090,15 @@
           <div class="timeline">
             <div class="moment reveal">
               <div class="when">آغاز آشنایی</div>
-              <p class="text">یک اتفاق ساده، که تبدیل شد به شروعِ یک داستانِ جدی و مهربان.</p>
+              <p class="text">قدم زدن در پارک لاله، با چایی آلبالو</p>
             </div>
             <div class="moment reveal">
               <div class="when">اولین قرار</div>
-              <p class="text">خنده‌های بی‌دلیل، مکث‌های کوتاه، و حسِ آشناییِ عجیب…</p>
+              <p class="text">گالری، مجسمه‌های آهنی و احساس گرمای عشق</p>
             </div>
             <div class="moment reveal">
-              <div class="when">پیشنهاد</div>
-              <p class="text">وقتی «بله» گفتیم، دنیا کمی نرم‌تر و آینده روشن‌تر شد.</p>
+              <div class="when">ازدواج</div>
+              <p class="text">شما شاهدان ما خواهید بود...</p>
             </div>
           </div>
         </div>
@@ -1119,9 +1120,9 @@
           <div class="grid-2">
             <div class="mini reveal">
               <h3><span class="dot" aria-hidden="true"></span> عقد / مراسم</h3>
-              <p><strong>تاریخ:</strong> شنبه، ۲۰ ژوئن ۲۰۲۶</p>
-              <p><strong>ساعت:</strong> ۱۶:۳۰</p>
-              <p><strong>مکان:</strong> نام سالن / باغ، شهر</p>
+              <p><strong>تاریخ:</strong> پنجشنبه، ششم فروردین‌ماه</p>
+              <p><strong>ساعت:</strong> ۱۷:۳۰</p>
+              <p><strong>مکان:</strong> باغ‌تالار اردیبهشت</p>
               <ul>
                 <li>لطفاً ۲۰ دقیقه زودتر حضور داشته باشید</li>
                 <li>عکاسی بدون فلش (در صورت امکان)</li>
@@ -1130,11 +1131,10 @@
 
             <div class="mini reveal">
               <h3><span class="dot" aria-hidden="true"></span> پذیرایی / جشن</h3>
-              <p><strong>شروع:</strong> ۱۸:۰۰</p>
-              <p><strong>پوشش پیشنهادی:</strong> رسمی / نیمه‌رسمی</p>
+              <p><strong>شروع:</strong> ۱۹:۰۰</p>
               <ul>
                 <li>شام و پذیرایی</li>
-                <li>موسیقی و رقص</li>
+                <li>موسیقی و جشن</li>
               </ul>
             </div>
 
@@ -1143,7 +1143,8 @@
                 title="نقشه گوگل"
                 loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.843821252946!2d144.96305791590467!3d-37.81627974202152!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zVmVudWUgTmFtZQ!5e0!3m2!1sfa!2s!4v0">
+                
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1618.2783427736429!2d51.32525280141593!3d35.78626461167346!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3f8de2b7ea7a9011%3A0xf07c2125d9c9d62f!2z2KjYp9i6INin2LHYr9uM2KjZh9i02Ko!5e0!3m2!1sen!2s!4v1772192733374!5m2!1sen!2s">
               </iframe>
             </div>
           </div>
@@ -1163,12 +1164,12 @@
           </p>
 
           <div class="gallery">
-            <div class="ph reveal"><img alt="عکس ۱" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1200&q=70"></div>
-            <div class="ph reveal"><img alt="عکس ۲" src="https://images.unsplash.com/photo-1523437237164-d442d57cc3c9?auto=format&fit=crop&w=1200&q=70"></div>
-            <div class="ph reveal"><img alt="عکس ۳" src="https://images.unsplash.com/photo-1520857014576-2c4f4c972b57?auto=format&fit=crop&w=1200&q=70"></div>
-            <div class="ph reveal"><img alt="عکس ۴" src="https://images.unsplash.com/photo-1487412947147-5cebf100ffc2?auto=format&fit=crop&w=1200&q=70"></div>
-            <div class="ph reveal"><img alt="عکس ۵" src="https://images.unsplash.com/photo-1523437237164-d442d57cc3c9?auto=format&fit=crop&w=1200&q=70"></div>
-            <div class="ph reveal"><img alt="عکس ۶" src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?auto=format&fit=crop&w=1200&q=70"></div>
+            <div class="ph reveal"><img alt="عکس ۱" src="./assets/1.jpg"></div>
+            <div class="ph reveal"><img alt="عکس ۲" src="./assets/2.jpg"></div>
+            <div class="ph reveal"><img alt="عکس ۳" src="./assets/3.jpg"></div>
+            <div class="ph reveal"><img alt="عکس ۴" src="./assets/4.jpg"></div>
+            <div class="ph reveal"><img alt="عکس ۵" src="./assets/5.jpg" style="object-position: center 20%;"></div>
+            <div class="ph reveal"><img alt="عکس ۶" src="./assets/6.jpg"></div>
           </div>
         </div>
       </div>
@@ -1221,7 +1222,7 @@
         <div class="section-card reveal">
           <div class="section-head">
             <h2 class="section-title">شمارش معکوس</h2>
-            <div class="section-kicker">تا روز بزرگ</div>
+            <div class="section-kicker">تا آغاز فصل جدیدی از زندگی‌مان</div>
           </div>
           <p class="section-sub">
             لحظه‌به‌لحظه نزدیک‌تر می‌شویم. تاریخ را در کد پایین می‌توانید تغییر دهید.
@@ -1250,7 +1251,7 @@
     </section>
 
     <footer>
-      با عشق • [نام نفر اول] و [نام نفر دوم]
+      با عشق • ابراهیمی و فیض‌آبادی
     </footer>
   </main>
 
@@ -1339,7 +1340,7 @@
     });
 
     // Countdown
-    const weddingDate = new Date('2026-06-20T16:30:00');
+    const weddingDate = new Date('2026-03-26T17:30:00+03:30');
     const cd = {
       days: document.getElementById('cdDays'),
       hours: document.getElementById('cdHours'),

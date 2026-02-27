@@ -1461,20 +1461,16 @@
 
     const scriptURL = "https://script.google.com/macros/s/AKfycbxiaqTc_4VF1pWmQZjNeNyNYy9FYAdc8w15oLTb6bic4Zi3XdKjSxpa8xqFtsid3JZ5/exec";
 
-    rsvpForm.addEventListener('submit', async (e) => {
+    rsvpForm.addEventListener("submit", async (e) => {
       e.preventDefault();
     
-      const formData = {
-        name: rsvpForm.name.value,
-        guests: rsvpForm.guests.value,
-        attendance: rsvpForm.attendance.value
-      };
+      const formData = new FormData(rsvpForm); // grabs name/guests/attendance by input "name" attributes
     
       try {
         await fetch(scriptURL, {
-          method: 'POST',
-          body: JSON.stringify(formData),
-          headers: { "Content-Type": "application/json" }
+          method: "POST",
+          body: formData,
+          mode: "no-cors", // prevents CORS blocking (you can't read response though)
         });
       
         rsvpNote.textContent = "سپاسگزاریم 🌿 پاسخ شما ثبت شد.";
@@ -1482,8 +1478,7 @@
       } catch (err) {
         rsvpNote.textContent = "خطا در ثبت اطلاعات. دوباره تلاش کنید.";
       }
-    });
-    // Music toggle
+    });ic toggle
     const bgm = document.getElementById('bgm');
     const musicBtn = document.getElementById('musicBtn');
     const musicLabel = document.getElementById('musicLabel');
